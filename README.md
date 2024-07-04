@@ -1,7 +1,7 @@
 # Setup
 
 Instalar VSCode 
-
+```
 volta
 volta install node@20
 volta install pnpm@9.4.0
@@ -18,3 +18,4 @@ sudo ps -la
 cd Documents/ENGQVS/Baseball/coding/alvaro-oddsportal/
 npx playwright
 npx playwright test
+```
