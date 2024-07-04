@@ -15,6 +15,7 @@ test.use({
 const urlOddsPortalMlbHome = "https://www.oddsportal.com/baseball/usa/mlb";
 
 test("Data MLB Home", async ({ page }) => {
+  test.setTimeout(60000)
   await page.goto(urlOddsPortalMlbHome);
   await page.getByRole("button", { name: "I Accept" }).click();
   const elems = await page
