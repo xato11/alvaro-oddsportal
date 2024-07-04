@@ -1,3 +1,6 @@
+import { json2csv } from "json-2-csv";
+const fs = require("node:fs");
+
 export const extractPartidoData = async (page, url = "", accept = false) => {
   if (url) {
     await page.goto(url);
@@ -70,3 +73,15 @@ export const extractPartidoData = async (page, url = "", accept = false) => {
   }
   return result;
 };
+
+export const exportToCsv = (preffix, data) => {
+  try {
+    fs.writeFileSync(
+      `./data/${preffix}${new Date().toISOString()}.csv`,
+      json2csv(data)
+    );
+    // file written successfully
+  } catch (err) {
+    console.error(err);
+  }
+}

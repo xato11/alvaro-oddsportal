@@ -1,9 +1,5 @@
 const { test } = require("@playwright/test");
-import { json2csv } from "json-2-csv";
-const { extractPartidoData } = require("./utils");
-const fs = require("node:fs");
-
-const content = "Some content!";
+const { extractPartidoData, exportToCsv } = require("./utils");
 
 test.use({
   viewport: {
@@ -40,13 +36,5 @@ test("Data MLB Home", async ({ page }) => {
     result.push(partidoDAta);
   }
 
-  try {
-    fs.writeFileSync(
-      `./data/odssportal${new Date().toISOString()}.csv`,
-      json2csv(result)
-    );
-    // file written successfully
-  } catch (err) {
-    console.error(err);
-  }
+  exportToCsv('oddsportal', result);
 });
